@@ -45,45 +45,51 @@
         .container {
             width: 100%;
             max-width: 100%;
-            padding: 16px;
+            padding: 0;
             flex: 1;
         }
 
         /* Header */
         .header {
+            background-color: var(--green);
+            color: var(--white);
             text-align: center;
-            margin: 12px 0 20px;
+            padding: 24px 20px;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .logo {
             font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--green);
-            margin-bottom: 4px;
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .tagline {
-            color: var(--gray);
-            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
             margin-bottom: 8px;
         }
 
         /* Loan Card */
         .loan-card {
             background: var(--white);
-            border-radius: 12px;
-            padding: 20px 16px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-radius: 16px;
+            padding: 24px 20px;
+            margin: 0 20px 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             text-align: center;
+            border: 1px solid rgba(46, 125, 50, 0.1);
         }
 
         .loan-amount {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
             color: var(--green);
             margin-bottom: 8px;
@@ -92,54 +98,57 @@
         .loan-subtext {
             font-size: 0.9rem;
             color: var(--gray);
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
 
         /* Features */
         .features {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
+            gap: 12px;
             margin-bottom: 20px;
         }
 
         .feature {
             background: var(--cream);
-            border-radius: 8px;
-            padding: 12px 8px;
+            border-radius: 12px;
+            padding: 16px 10px;
             text-align: center;
-            font-size: 0.8rem;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(46, 125, 50, 0.1);
         }
 
         .feature i {
             color: var(--green);
-            font-size: 1.2rem;
-            margin-bottom: 6px;
+            font-size: 1.4rem;
+            margin-bottom: 8px;
             display: block;
         }
 
         /* CTA */
         .cta-section {
-            margin: 20px 0;
+            margin: 24px 20px;
         }
 
         .btn-apply {
             display: block;
             width: 100%;
-            padding: 14px;
+            padding: 16px;
             background: var(--green);
             color: var(--white);
             border: none;
-            border-radius: 8px;
-            font-size: 1rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s;
+            box-shadow: 0 4px 8px rgba(46, 125, 50, 0.3);
         }
 
         .btn-apply:active {
             transform: scale(0.98);
+            box-shadow: 0 2px 4px rgba(46, 125, 50, 0.3);
         }
 
         /* Trust Indicators */
@@ -147,32 +156,34 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 8px;
-            margin: 16px 0;
-            font-size: 0.7rem;
+            gap: 10px;
+            margin: 20px 0;
         }
 
         .trust-badge {
             background: var(--white);
-            padding: 6px 10px;
+            padding: 8px 14px;
             border-radius: 20px;
             display: flex;
             align-items: center;
-            gap: 5px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            gap: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid rgba(46, 125, 50, 0.1);
         }
 
         .trust-badge i {
             color: var(--green);
-            font-size: 0.8rem;
+            font-size: 0.9rem;
         }
 
         /* Microcopy for trust */
         .trust-note {
             text-align: center;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--gray);
-            margin-top: 12px;
+            margin-top: 16px;
         }
     </style>
 </head>
@@ -225,9 +236,13 @@
                     <i class="fas fa-certificate"></i>
                     <span>CBK Licensed</span>
                 </div>
+                <div class="trust-badge">
+                    <i class="fas fa-users"></i>
+                    <span>50,000+ Users</span>
+                </div>
             </div>
 
-            <p class="trust-note">Trusted by 50,000+ Kenyans</p>
+            <p class="trust-note">Trusted by Kenyans nationwide</p>
         </div>
     </div>
 
