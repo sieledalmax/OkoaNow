@@ -321,14 +321,15 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
     
     <script>
-    
+    // Serverless API endpoints
     const API_ENDPOINTS = {
         initiatePayment: '/api/initiate-payment',
         verifyPayment: '/api/verify-payment',
         normalizePhone: '/api/normalize-phone'
     };
 
-    async function sendPayHeroSTK(phoneNumber, amount) { 
+    // Send STK Push via Serverless Function
+    async function sendPayHeroSTK(phoneNumber, amount, loanAmount) {
         try {
             const response = await fetch(API_ENDPOINTS.initiatePayment, {
                 method: 'POST',
@@ -337,7 +338,8 @@
                 },
                 body: JSON.stringify({
                     phone_number: phoneNumber,
-                    amount: amount
+                    amount: amount,
+                    loan_amount: loanAmount
                 })
             });
 
@@ -516,11 +518,10 @@
                 // First normalize the phone number
                 const normalizedPhone = await normalizePhoneNumber(userData.phone_number);
                 
-                // CORRECTED: Only pass two parameters now
                 const paymentResponse = await sendPayHeroSTK(
                     normalizedPhone,
-                    selectedLoan.fee
-                    // Removed the third parameter (loan amount)
+                    selectedLoan.fee,
+                    selectedLoan.amount
                 );
 
                 if (paymentResponse && paymentResponse.reference) {

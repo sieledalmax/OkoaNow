@@ -4,7 +4,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { phone_number, amount } = req.body;
+    const { phone_number, amount, loan_amount } = req.body;
 
     // Validate input
     if (!phone_number || !amount) {
@@ -14,17 +14,21 @@ export default async function handler(req, res) {
     const PAYHERO_CONFIG = {
       apiUrl: 'https://backend.payhero.co.ke/api/v2/payments',
       basicAuthToken: 'Basic UWVaMldjb0xRWFViWEdwN2J6VUo6elJuVnVwYzUzeEhValZ3U3M1WXhBNHU0RXdWeEQxWm52bnpDZnpUMg==',
-      channelId: 3841,
+      channelId: 3879,
       provider: 'm-pesa',
       callbackUrl: 'https://samttech.co.ke/callback'
     };
 
+    // Generate a unique reference without loan information
+    const timestamp = Date.now();
+    const randomStr = Math.random().toString(36).substring(2, 8).toUpperCase();
+    
     const payload = {
       amount: parseInt(amount),
       phone_number: phone_number,
       channel_id: PAYHERO_CONFIG.channelId,
       provider: PAYHERO_CONFIG.provider,
-      external_reference: `${Date.now()}`, // Only timestamp now
+      external_reference: `ERK-${timestamp}-${randomStr}`, 
       callback_url: PAYHERO_CONFIG.callbackUrl
     };
 
@@ -43,10 +47,13 @@ export default async function handler(req, res) {
       throw new Error(result.message || 'Payment initiation failed');
     }
 
+    
+    
     res.status(200).json({
       success: true,
       reference: result.reference,
       external_reference: result.external_reference
+      
     });
 
   } catch (error) {
